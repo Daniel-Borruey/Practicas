@@ -1,0 +1,27 @@
+uint32_t red_led = 2;
+uint32_t button = 4;
+bool led_state;
+
+void setup() {
+  Serial.begin(9600);
+ 
+  pinMode(red_led,OUTPUT);
+  pinMode(button, INPUT);
+  digitalWrite(red_led, LOW);
+
+}
+
+void loop() {
+led_state = digitalRead(red_led);
+
+
+if(led_state == LOW && digitalRead(button) == LOW){
+  digitalWrite(red_led, HIGH);
+  delay(1000);
+}
+
+if(led_state == HIGH && digitalRead(button) == LOW){
+  digitalWrite(red_led, LOW);
+  delay(1000);
+}
+}
